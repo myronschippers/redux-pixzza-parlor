@@ -17,6 +17,15 @@ class OrderCustomerInfoPage extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            customer: {
+                ...this.state.customer,
+                ...this.props.reduxState.customerReducer,
+            },
+        })
+    }
+
     clickNextStep = (event) => {
         this.props.dispatch({
             type: 'ADD_CUSTOMER_INFO',
@@ -57,7 +66,13 @@ class OrderCustomerInfoPage extends Component {
     render() {
         let nextBtnText = 'Next';
         let isNextDisabled = false;
-        if (this.state.customer.name && this.state.customer.streetAddress && this.state.customer.zip) {
+
+        if (this.state.customer.name === ''
+            || this.state.customer.streetAddress === ''
+            || this.state.customer.city === ''
+            || this.state.customer.zip === ''
+            || this.state.deliveryType === ''
+        ) {
             nextBtnText = 'Complete All Fields';
             isNextDisabled = true;
         }
