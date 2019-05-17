@@ -18,7 +18,7 @@ class OrderSelectPage extends Component {
 
     clickNextStep = (event) => {
         if (this.props.reduxState.pizzaOrderReducer.length === 0) {
-            // exiting erly not allowing the user
+            // exiting early not allowing the user
             return false;
         }
         this.props.history.push('/order-customer-info');
