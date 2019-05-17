@@ -23,7 +23,8 @@ class OrderCustomerInfoPage extends Component {
                 ...this.state.customer,
                 ...this.props.reduxState.customerReducer,
             },
-        })
+            deliveryType: this.props.reduxState.typeReducer,
+        });
     }
 
     clickNextStep = (event) => {
