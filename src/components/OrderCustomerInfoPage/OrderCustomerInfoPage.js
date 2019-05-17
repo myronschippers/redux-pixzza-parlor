@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
 
 class OrderCustomerInfoPage extends Component {
+    clickNextStep = (event) => {
+        this.props.history.push('/order-checkout');
+    }
+
     render() {
         return (
             <div>
@@ -10,6 +14,9 @@ class OrderCustomerInfoPage extends Component {
 
                 <div>
                     BODY CONTENT
+                </div>
+                <div>
+                    <button onClick={this.clickNextStep}>NEXT</button>
                 </div>
             </div>
         );

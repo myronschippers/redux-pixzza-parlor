@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
 
 class HomePage extends Component {
+    clickStartOrder = (event) => {
+        this.props.history.push('/order-select');
+    }
+
     render() {
         return (
             <div>
@@ -11,6 +15,7 @@ class HomePage extends Component {
                 <div>
                     BODY CONTENT
                 </div>
+                <button onClick={this.clickStartOrder}>Start Order</button>
             </div>
         );
     }
