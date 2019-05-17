@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
 import { getPizzaMenu } from '../../modules/services/pizza.api.service';
+import PizzaMenuList from '../PizzaMenuList/PizzaMenuList';
 
 class OrderSelectPage extends Component {
     componentDidMount() {
@@ -25,8 +26,8 @@ class OrderSelectPage extends Component {
             <div>
                 <h2>Step 1: Select Your Pizza</h2>
 
-                <div>
-                    BODY CONTENT
+                <div className="container">
+                    <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
                 </div>
                 <div>
                     <button onClick={this.clickNextStep}>NEXT</button>
