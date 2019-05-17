@@ -3,20 +3,19 @@ import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
 
 class PizzaMenuItem extends Component {
-    constructor(props) {
-        super(props);
+    getMatchedOrder() {
+        const matchedOrder = this.props.reduxState.pizzaOrderReducer.filter(pizzaItem => {
+            return this.props.pizza.id === pizzaItem.id;
+        });
 
-        this.state = {
-            matchedOrder: this.props.reduxState.pizzaOrderReducer.filter(pizzaItem => {
-                return this.props.pizza.id === pizzaItem.id;
-            }),
-        };
+        return matchedOrder;
     }
 
     clickAddPizza = (event) => {
         let dispatchType = 'ADD_PIZZA_ORDER';
+        const matchedOrder = this.getMatchedOrder();
 
-        if (this.state.matchedOrder.length === 0) {
+        if (matchedOrder.length > 0) {
             dispatchType = 'REMOVE_PIZZA_ORDER';
         }
 
@@ -34,8 +33,9 @@ class PizzaMenuItem extends Component {
             description,
         } = this.props.pizza;
         let btnText = 'ADD';
+        const matchedOrder = this.getMatchedOrder();
 
-        if (matchedOrder.length === 0) {
+        if (matchedOrder.length > 0) {
             btnText = 'REMOVE';
         }
 
