@@ -5,6 +5,10 @@ import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
 class PizzaMenuItem extends Component {
     clickAddPizza = (event) => {
         console.log(this.props.pizza);
+        this.props.dispatch({
+            type: 'ADD_PIZZA_ORDER',
+            payload: this.props.pizza,
+        });
     }
 
     render() {

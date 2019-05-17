@@ -17,11 +17,22 @@ class OrderSelectPage extends Component {
     }
 
     clickNextStep = (event) => {
+        if (this.props.reduxState.pizzaOrderReducer.length === 0) {
+            // exiting erly not allowing the user
+            return false;
+        }
         this.props.history.push('/order-customer-info');
     }
 
     render() {
         console.log('pizzaMenu', this.props.reduxState.pizzaMenuReducer);
+        let isNextDisabled = false;
+        let nextBtnText = 'NEXT';
+        if (this.props.reduxState.pizzaOrderReducer.length === 0) {
+            isNextDisabled = true;
+            nextBtnText = 'SELECT A PIZZA';
+        }
+
         return (
             <div>
                 <h2>Step 1: Select Your Pizza</h2>
@@ -30,7 +41,7 @@ class OrderSelectPage extends Component {
                     <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
                 </div>
                 <div>
-                    <button onClick={this.clickNextStep}>NEXT</button>
+                    <button disabled={isNextDisabled} onClick={this.clickNextStep}>{nextBtnText}</button>
                 </div>
             </div>
         );
