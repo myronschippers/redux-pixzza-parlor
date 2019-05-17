@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
+import { getPizzaMenu } from '../../modules/services/pizza.api.service';
 
 class OrderSelectPage extends Component {
+    componentDidMount() {
+        getPizzaMenu()
+            .then((response) => {
+                console.log('response', response);
+                this.props.dispatch({
+                    type: 'PIZZA_MENU',
+                    payload: response.data,
+                })
+            });
+    }
+
     clickNextStep = (event) => {
         this.props.history.push('/order-customer-info');
     }
 
     render() {
+        console.log('pizzaMenu', this.props.reduxState.pizzaMenuReducer);
         return (
             <div>
                 <h2>Step 1: Select Your Pizza</h2>
