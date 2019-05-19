@@ -136,28 +136,32 @@ class OrderCustomerInfoPage extends Component {
                             </label>
                         </div>
                         <div className="column">
-                            <label className="radio">
-                                <input
-                                    type="radio"
-                                    value="Pickup"
-                                    data-field="deliveryType"
-                                    checked={this.state.deliveryType === 'Pickup'} 
-                                    onChange={this.changeField}
-                                    className="answer"
-                                />&nbsp;
-                                <span>Pickup</span>
-                            </label>
-                            <label className="radio">
-                                <input
-                                    type="radio"
-                                    value="Delivery"
-                                    data-field="deliveryType"
-                                    checked={this.state.deliveryType === 'Delivery'}
-                                    onChange={this.changeField}
-                                    className="answer"
-                                />&nbsp;
-                                <span>Delivery</span>
-                            </label>
+                            <div className="vr vr_x3">
+                                <label className="radio">
+                                    <input
+                                        type="radio"
+                                        value="Pickup"
+                                        data-field="deliveryType"
+                                        checked={this.state.deliveryType === 'Pickup'} 
+                                        onChange={this.changeField}
+                                        className="answer"
+                                    />&nbsp;
+                                    <span>Pickup</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label className="radio">
+                                    <input
+                                        type="radio"
+                                        value="Delivery"
+                                        data-field="deliveryType"
+                                        checked={this.state.deliveryType === 'Delivery'}
+                                        onChange={this.changeField}
+                                        className="answer"
+                                    />&nbsp;
+                                    <span>Delivery</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>

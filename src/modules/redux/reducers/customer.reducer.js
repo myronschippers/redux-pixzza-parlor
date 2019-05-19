@@ -4,7 +4,7 @@ const defaultCustomer = {
     city: '',
     zip: '',
 };
-const customerReducer = (state = defaultCustomer, action) => {
+const customerReducer = (state = {...defaultCustomer}, action) => {
     const {
         type,
         payload,
@@ -16,7 +16,12 @@ const customerReducer = (state = defaultCustomer, action) => {
     
     switch (type) {
         case 'CLEAR_PIZZA_ORDER':
-            return defaultCustomer;
+            return {
+                name: '',
+                streetAddress: '',
+                city: '',
+                zip: '',
+            };
             break;
         default:
             return {
