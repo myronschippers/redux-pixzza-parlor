@@ -1,0 +1,40 @@
+.cart {
+    display: inline-block;
+}
+
+.cart > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cart-icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 10px;
+}
+
+.cart-icon-img {
+    width: 100%;
+    fill: #ffffff;
+}
+
+.cart-icon-count {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    top: 1px;
+    left: 36%;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 20px;
+    background-color: #23d160;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.cart-total {
+    font-size: 1.25rem;
+}
