@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
 import { postPizzaOrder } from '../../modules/services/pizza.api.service';
 
+// CSS
+import './checkout.css';
+
 class OrderCheckoutPage extends Component {
     clickCheckout = (event) => {
         alert('Your order has been placed!!!');
@@ -48,19 +51,22 @@ class OrderCheckoutPage extends Component {
                     <h2 className="title is-3">Step 3: Checkout</h2>
                 </div>
 
-                <div>
-                    <div>
-                        <div>
+                <div className="vr vr_x3">
+                    <div className="columns">
+                        <div className="column is-6">
                             {name}<br />
                             {streetAddress}<br />
                             {city}<br />
                             {zip}
                         </div>
-                        <div>
-                            {typeText}
+                        <div className="column is-6">
+                            <span className="title is-5">{typeText}</span>
                         </div>
                     </div>
-                    <table>
+                </div>
+
+                <div className="vr vr_x3">
+                    <table className="table is-striped is-bordered is-centered">
                         <thead>
                             <tr>
                                 <th>
@@ -75,9 +81,9 @@ class OrderCheckoutPage extends Component {
                             {pizzaOrderDetails}
                         </tbody>
                     </table>
-                    <div>
-                        Total: ${this.props.reduxState.totalCostReducer}
-                    </div>
+                </div>
+                <div className="vr vr_x3 has-text-right">
+                    <span className="title is-4">Total: ${this.props.reduxState.totalCostReducer}</span>
                 </div>
                 <div className="has-text-right">
                     <button
