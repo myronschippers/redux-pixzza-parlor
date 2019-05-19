@@ -21,8 +21,7 @@ class OrderCheckoutPage extends Component {
     }
 
     render() {
-        let typeText = '';
-        let totalCost = 0;
+        const typeText = `For ${this.props.reduxState.typeReducer}`;
         const {
             name,
             streetAddress,
@@ -30,14 +29,7 @@ class OrderCheckoutPage extends Component {
             zip,
         } = this.props.reduxState.customerReducer;
 
-        if (this.props.reduxState.typeReducer === 'delivery') {
-            typeText = 'For Delivery';
-        } else if (this.props.reduxState.typeReducer === 'pickup') {
-            typeText = 'For Pickup';
-        }
-
         const pizzaOrderDetails = this.props.reduxState.pizzaOrderReducer.map((pizzaItem, pizzaIndex) => {
-            totalCost += parseFloat(pizzaItem.price)
             return (
                 <tr key={pizzaIndex}>
                     <td>
@@ -82,7 +74,7 @@ class OrderCheckoutPage extends Component {
                         </tbody>
                     </table>
                     <div>
-                        Total: ${totalCost}
+                        Total: ${this.props.reduxState.totalCostReducer}
                     </div>
                 </div>
                 <div>

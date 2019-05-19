@@ -11,6 +11,11 @@ class Header extends Component {
             totalPrice += parseFloat(pizzaInOrder.price);
         });
 
+        this.props.dispatch({
+            type: 'TOTAL_COST',
+            payload: totalPrice,
+        })
+
         return (
             <header className="App-header">
                 <div>
