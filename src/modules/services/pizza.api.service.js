@@ -55,7 +55,12 @@ const postPizzaOrder = (postData) => {
     return axios.post('/api/order', serverData);
 };
 
+const getPizzaOrders = () => {
+    return axios.get('/api/order');
+};
+
 export {
     getPizzaMenu,
     postPizzaOrder,
+    getPizzaOrders,
 };

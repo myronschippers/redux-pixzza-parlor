@@ -1,14 +1,17 @@
-const totalCostReducer = (state = '', action) => {
+const totalCostReducer = (state = 0.00, action) => {
     const {
         type,
         payload,
     } = action;
 
-    if (type !== 'TOTAL_COST') {
-        return state;
+    switch (type) {
+        case 'ADD_PIZZA_ORDER':
+            return state + parseFloat(payload.price);
+        case 'REMOVE_PIZZA_ORDER':
+            return state - parseFloat(payload.price);
+        default:
+            return state;
     }
-
-    return payload;
 };
 
 export default totalCostReducer;

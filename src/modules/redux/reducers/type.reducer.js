@@ -11,10 +11,8 @@ const typeReducer = (state = '', action) => {
     switch (type) {
         case 'CLEAR_PIZZA_ORDER':
             return '';
-            break;
         default:
             return payload;
-            break;
     }
 
 };

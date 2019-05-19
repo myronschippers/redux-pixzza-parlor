@@ -22,13 +22,11 @@ const customerReducer = (state = {...defaultCustomer}, action) => {
                 city: '',
                 zip: '',
             };
-            break;
         default:
             return {
                 ...state,
                 ...payload,
             };
-            break;
     }
 };
 

@@ -9,16 +9,6 @@ import './header.css';
 class Header extends Component {
     render() {
         const cartCount = this.props.reduxState.pizzaOrderReducer.length;
-        let totalPrice = 0.00;
-
-        this.props.reduxState.pizzaOrderReducer.forEach((pizzaInOrder, pizzaIndex) => {
-            totalPrice += parseFloat(pizzaInOrder.price);
-        });
-
-        this.props.dispatch({
-            type: 'TOTAL_COST',
-            payload: totalPrice,
-        })
 
         return (
             <header className="hero is-info is-drkBase ">
@@ -41,7 +31,7 @@ class Header extends Component {
                                         {`${cartCount}`}
                                     </div>
                                 </div>
-                                <span className="cart-total">Total: ${totalPrice}</span>
+                                <span className="cart-total">Total: ${this.props.reduxState.totalCostReducer}</span>
                             </div>
                         </div>
                     </div>
