@@ -18,13 +18,40 @@ class AdminPage extends Component {
     }
 
     render() {
-        const orderTableRows = this.props.reduxState.orderReducer.map((orderItem, orderIndex) => {})
+        console.log('orderReducer: ', this.props.reduxState.orderReducer);
+        const orderTableRows = this.props.reduxState.orderReducer.map((orderItem, orderIndex) => {
+            return (
+                <tr key={orderIndex}>
+                    <td>{orderItem.customer_name}</td>
+                    <td>{orderItem.time}</td>
+                    <td>{orderItem.type}</td>
+                    <td>${orderItem.total}</td>
+                </tr>
+            );
+        })
         return (
-            <div>
-                <h2>Pizza Admin</h2>
+            <div className="section">
+                <div className="vr vr_x3">
+                    <h2 className="title is-3">Prime Pizza Admin</h2>
+                </div>
 
                 <div>
-                    BODY CONTENT
+                    <div className="vr vr_x3">
+                        <h3 className="title is-4">Order History</h3>
+                    </div>
+                    <table className="table is-striped is-bordered is-centered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Time Order Placed</th>
+                                <th>Type</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orderTableRows}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );

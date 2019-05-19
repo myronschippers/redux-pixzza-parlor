@@ -43,3 +43,13 @@ img {
 .blocks_3up > * {
   width: 33.333333%;
 }
+
+/*
+BULMA OVERRIDES
+----------------------------------------
+*/
+
+.table.is-centered {
+  margin: auto;
+  width: 100%;
+}

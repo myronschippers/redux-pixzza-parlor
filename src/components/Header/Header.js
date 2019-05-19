@@ -9,7 +9,6 @@ import CartIcon from '../CartIcon/CartIcon';
 
 class Header extends Component {
     render() {
-        console.log('props: ', this.props);
         const cartCount = this.props.reduxState.pizzaOrderReducer.length;
         let cartIconContent = '';
 
