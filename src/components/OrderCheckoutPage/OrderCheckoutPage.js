@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
+import { postPizzaOrder } from '../../modules/services/pizza.api.service';
 
 class OrderCheckoutPage extends Component {
     clickCheckout = (event) => {
         alert('Your order has been placed!!!');
-        this.props.history.push('/');
+        postPizzaOrder({
+            pizzaOrder: this.props.reduxState.pizzaOrderReducer,
+            customerInfo: this.props.reduxState.customerReducer,
+            deliveryType: this.props.reduxState.typeReducer,
+            totalCost: this.props.reduxState.totalCostReducer,
+        }).then((response) => {
+            console.log('Successfull post: ', response);
+            this.props.history.push('/');
+        })
+        .catch((err) => {
+            console.log('Error with the post: ', err);
+        });
     }
 
     render() {
