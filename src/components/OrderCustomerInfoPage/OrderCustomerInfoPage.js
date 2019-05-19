@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
+import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
+
+// CSS
+import './fieldMaterial.css';
 
 class OrderCustomerInfoPage extends Component {
     constructor(props) {
@@ -84,70 +87,78 @@ class OrderCustomerInfoPage extends Component {
                     <h2 className="title is-3">Step 2: Customer Information</h2>
                 </div>
 
-                <div>
-                    <div>
-                        <label>
-                            <span>Name</span>
-                            <input
-                                type="text"
-                                required={true}
-                                data-field="name"
-                                value={this.state.customer.name}
-                                onChange={this.changeField}
-                            />
-                        </label>
-                        <label>
-                            <span>Street Address</span>
-                            <input
-                                type="text"
-                                required={true}
-                                data-field="streetAddress"
-                                value={this.state.customer.streetAddress}
-                                onChange={this.changeField}
-                            />
-                        </label>
-                        <label>
-                            <span>City</span>
-                            <input
-                                type="text"
-                                required={true}
-                                data-field="city"
-                                value={this.state.customer.city}
-                                onChange={this.changeField}
-                            />
-                        </label>
-                        <label>
-                            <span>Zip</span>
-                            <input
-                                type="text"
-                                required={true}
-                                data-field="zip"
-                                value={this.state.customer.zip}
-                                onChange={this.changeField}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input
-                                type="radio"
-                                value="Pickup"
-                                data-field="deliveryType"
-                                checked={this.state.deliveryType === 'Pickup'} 
-                                onChange={this.changeField}
-                            />
-                            <span>Pickup</span>
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                value="Delivery"
-                                data-field="deliveryType"
-                                checked={this.state.deliveryType === 'Delivery'}
-                                onChange={this.changeField}
-                            />
-                            <span>Delivery</span>
-                        </label>
+                <div className="vr vr_x3">
+                    <div className="columns">
+                        <div className="column">
+                            <label className="fieldMaterial">
+                                <input
+                                    type="text"
+                                    required={true}
+                                    data-field="name"
+                                    value={this.state.customer.name}
+                                    onChange={this.changeField}
+                                    className="fieldMaterial-input"
+                                />
+                                <span className="fieldMaterial-label">Name</span>
+                            </label>
+                            <label className="fieldMaterial">
+                                <input
+                                    type="text"
+                                    required={true}
+                                    data-field="streetAddress"
+                                    value={this.state.customer.streetAddress}
+                                    onChange={this.changeField}
+                                    className="fieldMaterial-input"
+                                />
+                                <span className="fieldMaterial-label">Street Address</span>
+                            </label>
+                            <label className="fieldMaterial">
+                                <input
+                                    type="text"
+                                    required={true}
+                                    data-field="city"
+                                    value={this.state.customer.city}
+                                    onChange={this.changeField}
+                                    className="fieldMaterial-input"
+                                />
+                                <span className="fieldMaterial-label">City</span>
+                            </label>
+                            <label className="fieldMaterial">
+                                <input
+                                    type="text"
+                                    required={true}
+                                    data-field="zip"
+                                    value={this.state.customer.zip}
+                                    onChange={this.changeField}
+                                    className="fieldMaterial-input"
+                                />
+                                <span className="fieldMaterial-label">Zip</span>
+                            </label>
+                        </div>
+                        <div className="column">
+                            <label className="radio">
+                                <input
+                                    type="radio"
+                                    value="Pickup"
+                                    data-field="deliveryType"
+                                    checked={this.state.deliveryType === 'Pickup'} 
+                                    onChange={this.changeField}
+                                    className="answer"
+                                />&nbsp;
+                                <span>Pickup</span>
+                            </label>
+                            <label className="radio">
+                                <input
+                                    type="radio"
+                                    value="Delivery"
+                                    data-field="deliveryType"
+                                    checked={this.state.deliveryType === 'Delivery'}
+                                    onChange={this.changeField}
+                                    className="answer"
+                                />&nbsp;
+                                <span>Delivery</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div className="has-text-right">
