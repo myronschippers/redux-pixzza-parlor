@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapReduxStateToProps from '../../modules/mapReduxStateToProps'; 
+import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
+
+// CSS
+import './pizzaMenuItem.css';
 
 class PizzaMenuItem extends Component {
     getMatchedOrder() {
@@ -33,22 +36,34 @@ class PizzaMenuItem extends Component {
             description,
         } = this.props.pizza;
         let btnText = 'ADD';
+        let btnStyling = 'button is-medium is-fullwidth is-primary';
         const matchedOrder = this.getMatchedOrder();
 
         if (matchedOrder.length > 0) {
             btnText = 'REMOVE';
+            btnStyling = 'button is-medium is-fullwidth is-warning';
         }
 
         return (
             <div>
-                <div>
-                    <img src={image_path} alt={name} />
-                </div>
-                <div>
-                    <h4>{name}</h4>
-                    <p>Price: ${price}</p>
-                    <p>{description}</p>
-                    <button data-id={this.props.pizzaIndex} onClick={this.clickAddPizza}>{btnText}</button>
+                <div className="card">
+                    <div className="card-image">
+                        <img src={image_path} alt={name} />
+                    </div>
+                    <div className="card-content">
+                        <h4 className="title is-4">{name}</h4>
+                        <p className="subtitle is-5">Price: ${price}</p>
+                        <p>{description}</p>
+                    </div>
+                    <div className="card-footer">
+                        <button
+                            className={btnStyling}
+                            data-id={this.props.pizzaIndex}
+                            onClick={this.clickAddPizza}
+                        >
+                            {btnText}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
