@@ -3,12 +3,19 @@ const totalCostReducer = (state = 0.00, action) => {
         type,
         payload,
     } = action;
+    let itemPrice;
+
+    if (payload != null) {
+        itemPrice = Number(payload.price);
+    }
 
     switch (type) {
         case 'ADD_PIZZA_ORDER':
-            return state + parseFloat(payload.price);
+            const increasedCost = state + itemPrice;
+            return increasedCost;
         case 'REMOVE_PIZZA_ORDER':
-            return state - parseFloat(payload.price);
+            const decreasedCost = state - itemPrice;
+            return decreasedCost;
         default:
             return state;
     }
