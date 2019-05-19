@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
-import { getPizzaOrders, deletePizzaOrder } from '../../modules/services/pizza.api.service';
+import { getPizzaOrders, deletePizzaOrder, getPizzaMenu } from '../../modules/services/pizza.api.service';
+import PizzaMenuList from '../PizzaMenuList/PizzaMenuList';
 
 class AdminPage extends Component {
     componentDidMount() {
         this.loadOrders();
+        this.loadPizzaMenu();
     }
 
     /**
@@ -39,6 +41,25 @@ class AdminPage extends Component {
             });
     }
 
+    /**
+     * Check to see if the menu pizza items have been loaded already and if not make the necessary
+     * API call to load the Pizza Menu.
+     * @returns {boolean} - returns false in order to exit early
+     */
+    loadPizzaMenu() {
+        if (this.props.reduxState.pizzaMenuReducer.length > 0) {
+            return false;
+        }
+
+        getPizzaMenu()
+            .then((response) => {
+                this.props.dispatch({
+                    type: 'PIZZA_MENU',
+                    payload: response.data,
+                })
+            });
+    }
+
     render() {
         console.log('orderReducer: ', this.props.reduxState.orderReducer);
         const orderTableRows = this.props.reduxState.orderReducer.map((orderItem, orderIndex) => {
@@ -59,7 +80,14 @@ class AdminPage extends Component {
                     </td>
                 </tr>
             );
-        })
+        });
+
+        let pizzaMenu = <div>There are currently no pizza options in the menu.</div>
+
+        if (this.props.reduxState.pizzaMenuReducer.length > 0) {
+            pizzaMenu = <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
+        }
+
         return (
             <div className="section">
                 <div className="vr vr_x3">
@@ -92,7 +120,7 @@ class AdminPage extends Component {
                         <h3 className="title is-4">Pizza Menu</h3>
                     </div>
 
-                    
+                    {pizzaMenu}
                 </div>
             </div>
         );
