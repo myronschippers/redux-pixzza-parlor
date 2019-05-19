@@ -4,12 +4,21 @@ const pizzaOrderReducer = (state = [], action) => {
         payload
     } = action;
 
-    if (type === 'ADD_PIZZA_ORDER') {
-        return [...state, payload];
-    } else if (type === 'REMOVE_PIZZA_ORDER') {
-        return state.filter(pizza => {
-            return pizza.id !== payload.id;
-        })
+    switch (type) {
+        case 'ADD_PIZZA_ORDER':
+            return [...state, payload];
+            break;
+        case 'REMOVE_PIZZA_ORDER':
+            return state.filter(pizza => {
+                return pizza.id !== payload.id;
+            });
+            break;
+        case 'CLEAR_PIZZA_ORDER':
+            return [];
+            break;
+        default:
+            return state;
+            break;
     }
 
     return state;

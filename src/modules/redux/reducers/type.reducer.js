@@ -7,9 +7,16 @@ const typeReducer = (state = '', action) => {
     if (type !== 'ADD_DELIVERY_TYPE') {
         return state;
     }
-    console.log('payload', payload);
 
-    return payload;
+    switch (type) {
+        case 'CLEAR_PIZZA_ORDER':
+            return '';
+            break;
+        default:
+            return payload;
+            break;
+    }
+
 };
 
 export default typeReducer;

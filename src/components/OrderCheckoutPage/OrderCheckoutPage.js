@@ -8,7 +8,7 @@ import './checkout.css';
 
 class OrderCheckoutPage extends Component {
     clickCheckout = (event) => {
-        alert('Your order has been placed!!!');
+        // alert('Your order has been placed!!!');
         postPizzaOrder({
             pizzaOrder: this.props.reduxState.pizzaOrderReducer,
             customerInfo: this.props.reduxState.customerReducer,
@@ -16,6 +16,9 @@ class OrderCheckoutPage extends Component {
             totalCost: this.props.reduxState.totalCostReducer,
         }).then((response) => {
             console.log('Successfull post: ', response);
+            this.props.dispatch({
+                type: 'CLEAR_PIZZA_ORDER',
+            })
             this.props.history.push('/');
         })
         .catch((err) => {

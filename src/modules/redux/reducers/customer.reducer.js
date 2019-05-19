@@ -13,12 +13,18 @@ const customerReducer = (state = defaultCustomer, action) => {
     if (type !== 'ADD_CUSTOMER_INFO') {
         return state;
     }
-    console.log('payload', payload);
-
-    return {
-        ...state,
-        ...payload,
-    };
+    
+    switch (type) {
+        case 'CLEAR_PIZZA_ORDER':
+            return defaultCustomer;
+            break;
+        default:
+            return {
+                ...state,
+                ...payload,
+            };
+            break;
+    }
 };
 
 export default customerReducer;
