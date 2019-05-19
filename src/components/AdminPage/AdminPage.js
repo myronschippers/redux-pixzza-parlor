@@ -1,10 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
-import { getPizzaOrders } from '../../modules/services/pizza.api.service';
+import { getPizzaOrders, deletePizzaOrder } from '../../modules/services/pizza.api.service';
 
 class AdminPage extends Component {
     componentDidMount() {
+        this.loadOrders();
+    }
+
+    /**
+     * Get the id of the individual pizza order and delete that specific order from the database.
+     * @param {object} event
+     */
+    deleteOrderItem = (event) => {
+        const orderIndex = event.target.dataset.id;
+        const orderId = this.props.reduxState.orderReducer[orderIndex].id;
+        deletePizzaOrder(orderId)
+            .then((response) => {
+                this.loadOrders();
+            });
+    }
+
+    // ----------------------------------------------------------------------------------------------
+    /**
+     * Make the get API call needed to retrieve order details and then dispatch them to the redux
+     * state.
+     */
+    loadOrders() {
         getPizzaOrders()
             .then((response) => {
                 this.props.dispatch({
@@ -26,6 +48,15 @@ class AdminPage extends Component {
                     <td>{orderItem.time}</td>
                     <td>{orderItem.type}</td>
                     <td>${orderItem.total}</td>
+                    <td className="has-text-center">
+                        <button
+                            className="button is-danger"
+                            data-id={orderIndex}
+                            onClick={this.deleteOrderItem}
+                        >
+                            DELETE
+                        </button>
+                    </td>
                 </tr>
             );
         })
@@ -35,10 +66,11 @@ class AdminPage extends Component {
                     <h2 className="title is-3">Prime Pizza Admin</h2>
                 </div>
 
-                <div>
+                <div className="vr vr_x3">
                     <div className="vr vr_x3">
                         <h3 className="title is-4">Order History</h3>
                     </div>
+
                     <table className="table is-striped is-bordered is-centered">
                         <thead>
                             <tr>
@@ -46,12 +78,21 @@ class AdminPage extends Component {
                                 <th>Time Order Placed</th>
                                 <th>Type</th>
                                 <th>Cost</th>
+                                <th>Control</th>
                             </tr>
                         </thead>
                         <tbody>
                             {orderTableRows}
                         </tbody>
                     </table>
+                </div>
+
+                <div className="vr vr_x3">
+                    <div className="vr vr_x3">
+                        <h3 className="title is-4">Pizza Menu</h3>
+                    </div>
+
+                    
                 </div>
             </div>
         );

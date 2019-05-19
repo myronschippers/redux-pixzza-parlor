@@ -59,8 +59,13 @@ const getPizzaOrders = () => {
     return axios.get('/api/order');
 };
 
+const deletePizzaOrder = (orderId) => {
+    return axios.delete(`/api/order/${orderId}`);
+};
+
 export {
     getPizzaMenu,
     postPizzaOrder,
     getPizzaOrders,
+    deletePizzaOrder,
 };
