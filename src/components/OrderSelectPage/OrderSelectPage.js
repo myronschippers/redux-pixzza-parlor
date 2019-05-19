@@ -39,11 +39,17 @@ class OrderSelectPage extends Component {
                     <h2 className="title is-3">Step 1: Select Your Pizza</h2>
                 </div>
 
-                <div>
+                <div className="vr vr_x3">
                     <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
                 </div>
-                <div>
-                    <button disabled={isNextDisabled} onClick={this.clickNextStep}>{nextBtnText}</button>
+                <div className="has-text-right">
+                    <button
+                        className="button is-large is-link"
+                        disabled={isNextDisabled}
+                        onClick={this.clickNextStep}
+                    >
+                        {nextBtnText}
+                    </button>
                 </div>
             </div>
         );

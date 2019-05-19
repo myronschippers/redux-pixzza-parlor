@@ -79,8 +79,13 @@ class OrderCheckoutPage extends Component {
                         Total: ${this.props.reduxState.totalCostReducer}
                     </div>
                 </div>
-                <div>
-                    <button onClick={this.clickCheckout}>CHECKOUT</button>
+                <div className="has-text-right">
+                    <button
+                        className="button is-large is-link"
+                        onClick={this.clickCheckout}
+                    >
+                        CHECKOUT
+                    </button>
                 </div>
             </div>
         );

@@ -150,8 +150,14 @@ class OrderCustomerInfoPage extends Component {
                         </label>
                     </div>
                 </div>
-                <div>
-                    <button disabled={isNextDisabled} onClick={this.clickNextStep}>{nextBtnText}</button>
+                <div className="has-text-right">
+                    <button
+                        className="button is-large is-link"
+                        disabled={isNextDisabled}
+                        onClick={this.clickNextStep}
+                    >
+                        {nextBtnText}
+                    </button>
                 </div>
             </div>
         );
