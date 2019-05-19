@@ -18,11 +18,9 @@ class App extends Component {
           <Header />
 
           <Route exact path="/" component={HomePage} />
-          <div className="container">
-            <Route path="/order-select" component={OrderSelectPage} />
-            <Route path="/order-customer-info" component={OrderCustomerInfoPage} />
-            <Route path="/order-checkout" component={OrderCheckoutPage} />
-          </div>
+          <Route path="/order-select" component={OrderSelectPage} />
+          <Route path="/order-customer-info" component={OrderCustomerInfoPage} />
+          <Route path="/order-checkout" component={OrderCheckoutPage} />
         </div>
       </Router>
     );

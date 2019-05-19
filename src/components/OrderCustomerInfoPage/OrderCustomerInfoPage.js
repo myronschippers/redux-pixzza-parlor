@@ -79,7 +79,7 @@ class OrderCustomerInfoPage extends Component {
         }
 
         return (
-            <div>
+            <div className="section">
                 <h2>Step 2: Customer Information</h2>
 
                 <div>

@@ -34,10 +34,10 @@ class OrderSelectPage extends Component {
         }
 
         return (
-            <div>
+            <div className="section">
                 <h2>Step 1: Select Your Pizza</h2>
 
-                <div className="container">
+                <div>
                     <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
                 </div>
                 <div>
