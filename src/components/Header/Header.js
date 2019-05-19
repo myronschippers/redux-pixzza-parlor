@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapReduxStateToProps from '../../modules/mapReduxStateToProps';
+import { withRouter } from 'react-router-dom';
 
 // CSS
-import './cart.css';
 import './header.css';
+import CartIcon from '../CartIcon/CartIcon';
 
 class Header extends Component {
     render() {
+        console.log('props: ', this.props);
         const cartCount = this.props.reduxState.pizzaOrderReducer.length;
+        let cartIconContent = '';
+
+        if (this.props.location.pathname.indexOf('admin') === -1) {
+            cartIconContent = <CartIcon cartCount={cartCount} totalCost={this.props.reduxState.totalCostReducer}  />
+        }
 
         return (
             <header className="hero is-info is-drkBase ">
@@ -20,19 +27,7 @@ class Header extends Component {
                             <p className="subtitle">Hand crafted mouthgazm...</p>
                         </div>
                         <div className="column is-3 has-text-right">
-                            <div className="cart">
-                                <div className="cart-icon">
-                                    <img
-                                        src="images/shopping-store-cart.svg"
-                                        alt="shopping cart icon"
-                                        className="cart-icon-img"
-                                    />
-                                    <div className="cart-icon-count">
-                                        {`${cartCount}`}
-                                    </div>
-                                </div>
-                                <span className="cart-total">Total: ${this.props.reduxState.totalCostReducer}</span>
-                            </div>
+                            {cartIconContent}
                         </div>
                     </div>
 
@@ -42,4 +37,4 @@ class Header extends Component {
     }
 }
 
-export default connect(mapReduxStateToProps)(Header);
+export default withRouter(connect(mapReduxStateToProps)(Header));
