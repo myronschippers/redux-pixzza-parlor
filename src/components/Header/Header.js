@@ -26,7 +26,7 @@ class Header extends Component {
 
                     <div className="columns is-vcentered">
                         <div className="column is-9">
-                            <h1 className="title">Prime Pizza</h1>
+                            <h1 className="title is-1">Prime Pizza</h1>
                             <p className="subtitle">Hand crafted mouthgazm...</p>
                         </div>
                         <div className="column is-3 has-text-right">

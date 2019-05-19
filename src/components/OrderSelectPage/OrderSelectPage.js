@@ -35,7 +35,9 @@ class OrderSelectPage extends Component {
 
         return (
             <div className="section">
-                <h2>Step 1: Select Your Pizza</h2>
+                <div className="vr vr_x3">
+                    <h2 className="title is-3">Step 1: Select Your Pizza</h2>
+                </div>
 
                 <div>
                     <PizzaMenuList pizzaMenu={this.props.reduxState.pizzaMenuReducer} />
