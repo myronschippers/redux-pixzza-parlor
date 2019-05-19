@@ -129,9 +129,9 @@ class OrderCustomerInfoPage extends Component {
                         <label>
                             <input
                                 type="radio"
-                                value="pickup"
+                                value="Pickup"
                                 data-field="deliveryType"
-                                checked={this.state.deliveryType === 'pickup'} 
+                                checked={this.state.deliveryType === 'Pickup'} 
                                 onChange={this.changeField}
                             />
                             <span>Pickup</span>
@@ -139,9 +139,9 @@ class OrderCustomerInfoPage extends Component {
                         <label>
                             <input
                                 type="radio"
-                                value="delivery"
+                                value="Delivery"
                                 data-field="deliveryType"
-                                checked={this.state.deliveryType === 'delivery'}
+                                checked={this.state.deliveryType === 'Delivery'}
                                 onChange={this.changeField}
                             />
                             <span>Delivery</span>
